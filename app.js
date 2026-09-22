@@ -3,7 +3,18 @@
     grade: "g3",
     sem: "s1",
     progressMode: false,
+    schoolOnlyMode: false,
   };
+
+  // ---------- School versions banner ----------
+  const schoolVersionsEl = document.getElementById("schoolVersions");
+  if (schoolVersionsEl && typeof SCHOOL_VERSIONS !== "undefined") {
+    schoolVersionsEl.textContent =
+      "本校使用版本：" +
+      Object.entries(SCHOOL_VERSIONS)
+        .map(([subject, pub]) => subject + " " + pub + "版")
+        .join("・");
+  }
 
   const PROGRESS_KEY = "sci115-progress";
 
@@ -67,6 +78,13 @@
     document.getElementById("compareGrid").classList.toggle("progress-mode", state.progressMode);
   });
 
+  // ---------- School-only mode toggle ----------
+  const schoolOnlyToggle = document.getElementById("schoolOnlyMode");
+  schoolOnlyToggle.addEventListener("change", () => {
+    state.schoolOnlyMode = schoolOnlyToggle.checked;
+    render();
+  });
+
   // ---------- Render compare grid ----------
   function render() {
     const gradeData = CURRICULUM.data[state.grade];
@@ -89,15 +107,27 @@
 
     const progress = loadProgress();
 
+    const schoolPub = (typeof SCHOOL_VERSIONS !== "undefined") ? SCHOOL_VERSIONS["自然"] : null;
+
     CURRICULUM.meta.publishers.forEach((pub) => {
       const units = (semData.units && semData.units[pub]) || [];
+      const isSchoolPub = pub === schoolPub;
+
+      if (state.schoolOnlyMode && !isSchoolPub) return;
+
       const card = document.createElement("div");
-      card.className = "pub-card";
+      card.className = "pub-card" + (isSchoolPub ? " school-pub" : "");
       card.dataset.pub = pub;
 
       const head = document.createElement("div");
       head.className = "pub-card-head";
       head.textContent = pub;
+      if (isSchoolPub) {
+        const badge = document.createElement("span");
+        badge.className = "school-badge";
+        badge.textContent = "本校適用";
+        head.appendChild(badge);
+      }
       card.appendChild(head);
 
       const body = document.createElement("div");

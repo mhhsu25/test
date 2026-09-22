@@ -38,9 +38,14 @@ body {
   font-size: 1.5rem;
 }
 .site-header .subtitle {
-  margin: 0 0 18px;
+  margin: 0 0 8px;
   color: #cbd5e1;
   font-size: 0.95rem;
+}
+.school-versions {
+  margin: 0 0 18px;
+  color: #a5b4fc;
+  font-size: 0.85rem;
 }
 
 .tabs {
@@ -147,6 +152,24 @@ main.wrap { padding-top: 24px; padding-bottom: 60px; }
 .pub-card[data-pub="康軒"] .pub-card-head { background: var(--kh-color); }
 .pub-card[data-pub="南一"] .pub-card-head { background: var(--ny-color); }
 .pub-card[data-pub="翰林"] .pub-card-head { background: var(--hl-color); }
+
+.pub-card.school-pub {
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+.pub-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.school-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
 
 .pub-card-body { padding: 12px 16px; }
 
