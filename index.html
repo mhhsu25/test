@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>115學年度｜國小‧國中自然科三版本課程比對</title>
+<meta name="description" content="康軒／南一／翰林 三版本 國小自然(3-6年級)與國中自然科學‧理化(7-9年級) 課程單元比對，用於課程銜接、跨版本比對與備課進度規劃。" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>115學年度｜國小‧國中自然科三版本課程比對</h1>
+      <p class="subtitle">康軒・南一・翰林｜國小自然(三～六年級) × 國中自然科學／理化(七～九年級)</p>
+      <nav class="tabs" id="mainTabs">
+        <button class="tab-btn active" data-view="compare">課程比對</button>
+        <button class="tab-btn" data-view="bridge">課程銜接地圖</button>
+        <button class="tab-btn" data-view="about">資料來源與說明</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===================== 課程比對 ===================== -->
+    <section id="view-compare" class="view active">
+      <div class="controls">
+        <div class="control-group" id="gradeButtons"></div>
+        <div class="control-group seg" id="semButtons">
+          <button class="seg-btn active" data-sem="s1">上學期</button>
+          <button class="seg-btn" data-sem="s2">下學期</button>
+        </div>
+        <label class="progress-toggle">
+          <input type="checkbox" id="progressMode" />
+          備課進度勾選模式
+        </label>
+      </div>
+
+      <div id="editionBanner" class="edition-banner"></div>
+
+      <div id="compareGrid" class="compare-grid"></div>
+    </section>
+
+    <!-- ===================== 課程銜接地圖 ===================== -->
+    <section id="view-bridge" class="view">
+      <h2>課程銜接地圖</h2>
+      <p class="hint">依主題歸納跨年級脈絡（整理者歸納，非官方分類），協助掌握國小到國中的概念發展順序，可用於跨冊備課與補強銜接落差。</p>
+      <div id="threadList" class="thread-list"></div>
+
+      <h3 class="section-sub">階段重點速覽</h3>
+      <table class="stage-table">
+        <thead><tr><th>階段</th><th>年級</th><th>主要課程重點</th></tr></thead>
+        <tbody>
+          <tr><td>國小中年級</td><td>三、四年級</td><td>植物、動物、空氣與水、磁力、天氣、聲光、電路、昆蟲、地表環境與自然資源。重在觀察、分類、操作與生活經驗。</td></tr>
+          <tr><td>國小高年級</td><td>五、六年級</td><td>水溶液、力與運動、燃燒與生鏽、熱、電磁、天氣變化、地表作用、簡單機械與生態永續。開始銜接國中理化與地球科學。</td></tr>
+          <tr><td>國中</td><td>七、八、九年級</td><td>七年級聚焦生命科學；八年級為理化基礎與化學反應；九年級為力學、電磁、地球科學與永續議題，開始加重模型、圖表、量化與推論。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===================== 關於 / 資料來源 ===================== -->
+    <section id="view-about" class="view">
+      <h2>資料來源與免責聲明</h2>
+
+      <div class="notice">
+        <strong>請務必詳讀：</strong>本站為民間自行整理之備課參考工具，<u>並非康軒／南一／翰林三家出版社之官方資料</u>，內容可能與貴校實際採用之當年度課本目次有出入。正式教學計畫、進度安排，請以任教學校當學期實際採用之課本與學校課程計畫為準。
+      </div>
+
+      <h3>國小（三～六年級）資料來源</h3>
+      <ul>
+        <li>三家出版社「115學年教材博覽會」公開簡介本（康軒國小教材博覽會自然、翰林115國小教材博覽會自然、南一教材博覽會自然），並參考第三方彙整站 <a href="https://prayer168.github.io/science-course/" target="_blank" rel="noopener">prayer168.github.io/science-course</a>（整理日期2026-06-22）之編排。</li>
+        <li>交叉核對：LearnMode 學習吧（<a href="https://www.learnmode.net" target="_blank" rel="noopener">learnmode.net</a>）三家出版社 112學年度課本目次頁面，多數年級單元名稱與教材博覽會資料完全吻合。</li>
+        <li>已知改版差異：康軒國小四年級下學期，108學年舊版與112學年新版單元主題有明顯調整（詳見「課程比對」頁四下說明）。</li>
+      </ul>
+
+      <h3>國中（七～九年級）資料來源</h3>
+      <ul>
+        <li>LearnMode 學習吧公開課程頁面之課本目次（多數為112學年度版；翰林部分頁面為108～112學年度版，因平台未逐年全面更新）。</li>
+        <li>補教業者「巨匠 iWorldJR」部落格發布之逐節整理（<a href="https://www.wincenter.com.tw" target="_blank" rel="noopener">wincenter.com.tw</a>，2024/11～2025/02發布，八年級理化章節）。</li>
+        <li>各年級、學期實際引用之版次已標註於「課程比對」頁每個學期上方的版次說明。</li>
+      </ul>
+
+      <h3>為何找不到「115學年度」的官方完整目次？</h3>
+      <p>康軒、南一、翰林三家出版社的正式「課程計畫」多以 Google 雲端硬碟資料夾或需教師帳號登入之平台提供，一般大眾與網路爬蟲皆無法直接存取完整目次 PDF。惟108課綱教材在同一課綱週期內，單元架構通常維持穩定；本站以可公開查證之112學年度（或更早）版本為基礎，並輔以三家「115學年教材博覽會」簡介本交叉比對，力求貼近115學年度實況，但仍可能與個別學校最終採用之課本存在微小差異。</p>
+
+      <h3>建議使用方式</h3>
+      <ul>
+        <li>用於整體課程架構的<strong>跨版本比對</strong>與<strong>國小到國中的銜接規劃</strong>。</li>
+        <li>正式排課、命題、聯絡簿進度等，請以貴校實際課本與教務處課程計畫為準。</li>
+        <li>若發現本站資料與貴校課本不符，歡迎依此站的 GitHub 原始碼自行修正 <code>data.js</code> 後重新發布。</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>本站為個人整理之教學參考工具，非康軒／南一／翰林官方網站。內容如有錯誤，歡迎自行修正 <code>data.js</code>。</p>
+    </div>
+  </footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
