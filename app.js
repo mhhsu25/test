@@ -1,10 +1,16 @@
 (function () {
   const state = {
+    subject: "自然",
     grade: "g3",
     sem: "s1",
     progressMode: false,
     schoolOnlyMode: false,
   };
+
+  function subjectData(subject) {
+    if (subject === "自然") return CURRICULUM.data;
+    return (typeof SUBJECT_DATA !== "undefined") ? SUBJECT_DATA[subject] : null;
+  }
 
   // ---------- School versions banner ----------
   const schoolVersionsEl = document.getElementById("schoolVersions");
@@ -42,6 +48,16 @@
     });
   });
 
+  // ---------- Subject buttons ----------
+  document.querySelectorAll("#subjectButtons .seg-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#subjectButtons .seg-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.subject = btn.dataset.subject;
+      render();
+    });
+  });
+
   // ---------- Grade buttons ----------
   const gradeOrder = ["g3", "g4", "g5", "g6", "g7", "g8", "g9"];
   const gradeButtonsEl = document.getElementById("gradeButtons");
@@ -62,9 +78,9 @@
   });
 
   // ---------- Semester buttons ----------
-  document.querySelectorAll(".seg-btn").forEach((btn) => {
+  document.querySelectorAll("#semButtons .seg-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".seg-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll("#semButtons .seg-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       state.sem = btn.dataset.sem;
       render();
@@ -87,17 +103,21 @@
 
   // ---------- Render compare grid ----------
   function render() {
-    const gradeData = CURRICULUM.data[state.grade];
+    const data = subjectData(state.subject);
+    const gradeData = data ? data[state.grade] : null;
     const semData = gradeData ? gradeData[state.sem] : null;
     const grid = document.getElementById("compareGrid");
     grid.innerHTML = "";
 
+    const subjectMeta = (typeof SUBJECT_META !== "undefined") ? SUBJECT_META[state.subject] : null;
     const banner = document.getElementById("editionBanner");
-    if (semData && (semData.edition || semData.note)) {
+    const editionText = (semData && semData.edition) || (subjectMeta && subjectMeta.editionNote) || "";
+    const noteText = (semData && semData.note) || "";
+    if (editionText || noteText) {
       banner.classList.add("show");
       banner.innerHTML =
-        (semData.edition ? "<strong>資料版次：</strong>" + semData.edition + "　" : "") +
-        (semData.note ? semData.note : "");
+        (editionText ? "<strong>資料版次：</strong>" + editionText + "　" : "") +
+        (noteText ? noteText : "");
     } else {
       banner.classList.remove("show");
       banner.innerHTML = "";
@@ -107,9 +127,11 @@
 
     const progress = loadProgress();
 
-    const schoolPub = (typeof SCHOOL_VERSIONS !== "undefined") ? SCHOOL_VERSIONS["自然"] : null;
+    const schoolPub = (typeof SCHOOL_VERSIONS !== "undefined") ? SCHOOL_VERSIONS[state.subject] : null;
 
-    CURRICULUM.meta.publishers.forEach((pub) => {
+    const publishers = (state.subject === "自然") ? CURRICULUM.meta.publishers : ["康軒", "南一", "翰林"];
+
+    publishers.forEach((pub) => {
       const units = (semData.units && semData.units[pub]) || [];
       const isSchoolPub = pub === schoolPub;
 
@@ -134,7 +156,7 @@
       body.className = "pub-card-body";
 
       units.forEach((unit, idx) => {
-        const key = [state.grade, state.sem, pub, idx].join("|");
+        const key = [state.subject, state.grade, state.sem, pub, idx].join("|");
         const block = document.createElement("div");
         block.className = "unit-block";
 

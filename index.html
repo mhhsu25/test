@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>115學年度｜國小‧國中自然科三版本課程比對</title>
-<meta name="description" content="康軒／南一／翰林 三版本 國小自然(3-6年級)與國中自然科學‧理化(7-9年級) 課程單元比對，用於課程銜接、跨版本比對與備課進度規劃。" />
+<title>115學年度｜國小‧國中三版本課程比對</title>
+<meta name="description" content="康軒／南一／翰林 三版本 國小(3-6年級)與國中(7-9年級) 自然／國語／數學／社會 課程單元比對，用於課程銜接、跨版本比對與備課進度規劃。" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <h1>115學年度｜國小‧國中自然科三版本課程比對</h1>
-      <p class="subtitle">康軒・南一・翰林｜國小自然(三～六年級) × 國中自然科學／理化(七～九年級)</p>
+      <h1>115學年度｜國小‧國中三版本課程比對</h1>
+      <p class="subtitle">康軒・南一・翰林｜國小(三～六年級) × 國中(七～九年級)｜自然・國語・數學・社會</p>
       <p class="school-versions" id="schoolVersions"></p>
       <nav class="tabs" id="mainTabs">
         <button class="tab-btn active" data-view="compare">課程比對</button>
@@ -26,6 +26,12 @@
     <!-- ===================== 課程比對 ===================== -->
     <section id="view-compare" class="view active">
       <div class="controls">
+        <div class="control-group seg" id="subjectButtons">
+          <button class="seg-btn active" data-subject="自然">自然</button>
+          <button class="seg-btn" data-subject="國語">國語</button>
+          <button class="seg-btn" data-subject="數學">數學</button>
+          <button class="seg-btn" data-subject="社會">社會</button>
+        </div>
         <div class="control-group" id="gradeButtons"></div>
         <div class="control-group seg" id="semButtons">
           <button class="seg-btn active" data-sem="s1">上學期</button>
@@ -37,7 +43,7 @@
         </label>
         <label class="progress-toggle">
           <input type="checkbox" id="schoolOnlyMode" />
-          只看本校自然版本
+          只看本校版本
         </label>
       </div>
 
@@ -48,8 +54,8 @@
 
     <!-- ===================== 課程銜接地圖 ===================== -->
     <section id="view-bridge" class="view">
-      <h2>課程銜接地圖</h2>
-      <p class="hint">依主題歸納跨年級脈絡（整理者歸納，非官方分類），協助掌握國小到國中的概念發展順序，可用於跨冊備課與補強銜接落差。</p>
+      <h2>課程銜接地圖（自然科）</h2>
+      <p class="hint">依主題歸納跨年級脈絡（整理者歸納，非官方分類），協助掌握國小到國中的概念發展順序，可用於跨冊備課與補強銜接落差。目前僅提供自然科的銜接地圖；國語／數學／社會請直接使用「課程比對」頁切換年級學期查看。</p>
       <div id="threadList" class="thread-list"></div>
 
       <h3 class="section-sub">階段重點速覽</h3>
@@ -88,11 +94,18 @@
       <h3>為何找不到「115學年度」的官方完整目次？</h3>
       <p>康軒、南一、翰林三家出版社的正式「課程計畫」多以 Google 雲端硬碟資料夾或需教師帳號登入之平台提供，一般大眾與網路爬蟲皆無法直接存取完整目次 PDF。惟108課綱教材在同一課綱週期內，單元架構通常維持穩定；本站以可公開查證之112學年度（或更早）版本為基礎，並輔以三家「115學年教材博覽會」簡介本交叉比對，力求貼近115學年度實況，但仍可能與個別學校最終採用之課本存在微小差異。</p>
 
+      <h3>國語／數學／社會 資料來源</h3>
+      <ul>
+        <li>全數來自 LearnMode 學習吧（learnmode.net）公開課程頁面之課本目次，該平台聲明依教科書目次建立章節；多數為112學年度版，部分翰林社會科頁面為108～111學年度版（已於「課程比對」頁個別標註）。</li>
+        <li>南一「社會」科因研究當次 WebFetch 工具故障，僅能以搜尋摘要拼湊，缺漏與低信心項目甚多（尤其國中公民與社會科幾乎全數缺漏），使用前請務必與貴校實際課本核對；詳細缺漏清單見 GitHub 原始碼 <code>sources/research_social_nani.md</code>。</li>
+        <li>國中「社會」科依歷史／地理／公民與社會三科分別列出。</li>
+      </ul>
+
       <h3>建議使用方式</h3>
       <ul>
         <li>用於整體課程架構的<strong>跨版本比對</strong>與<strong>國小到國中的銜接規劃</strong>。</li>
         <li>正式排課、命題、聯絡簿進度等，請以貴校實際課本與教務處課程計畫為準。</li>
-        <li>若發現本站資料與貴校課本不符，歡迎依此站的 GitHub 原始碼自行修正 <code>data.js</code> 後重新發布。</li>
+        <li>若發現本站資料與貴校課本不符，歡迎依此站的 GitHub 原始碼自行修正 <code>data.js</code>／<code>data-subjects.js</code> 後重新發布。</li>
       </ul>
     </section>
 
@@ -104,7 +117,8 @@
     </div>
   </footer>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script src="data.js" charset="utf-8"></script>
+<script src="data-subjects.js" charset="utf-8"></script>
+<script src="app.js" charset="utf-8"></script>
 </body>
 </html>
